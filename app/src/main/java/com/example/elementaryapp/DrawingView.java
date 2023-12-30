@@ -89,6 +89,10 @@ public class DrawingView extends View {
         canvas.drawColor(Color.WHITE);
         invalidate();
     }
+
+    public Bitmap getBitmap() {
+        return bitmap.copy(Bitmap.Config.ARGB_8888, true);
+    }
 }
 
 
