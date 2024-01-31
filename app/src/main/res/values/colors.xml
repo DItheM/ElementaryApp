@@ -12,5 +12,9 @@
 
     <color name="btnBack">#181824</color>
 
-    <color name="navBtn">#191919</color>
+    <color name="navBackBtn">#191919</color>
+
+    <color name="bgClr_1">#ff9051</color>
+    <color name="bgClr_2">#714f8c</color>
+    <color name="bgClr_3">#80bdff</color>
 </resources>

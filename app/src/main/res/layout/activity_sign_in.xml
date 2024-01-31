@@ -80,13 +80,13 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:srcCompat="@drawable/i_1" />
+        app:srcCompat="@drawable/i_3" />
 
     <TextView
         android:id="@+id/textView"
@@ -104,7 +104,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/start_learning_btn"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_marginTop="40dp"
