@@ -2,4 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="Heading">#070707</color>
+    <color name="subHead">#4b4b4b</color>
+    <color name="subText">#888888</color>
+
+    <color name="inputBack">#f5f5f5</color>
+    <color name="placeholder">#b5b5b5</color>
+
+    <color name="btnBack">#181824</color>
+
+    <color name="navBtn">#191919</color>
 </resources>

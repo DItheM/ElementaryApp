@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // Build the HTTP request
                 Request request = new Request.Builder()
-                        .url("http://192.168.8.105:5000/predict")
+                        .url("http://192.168.8.102:5000/predict")
                         .post(requestBody)
                         .build();
 

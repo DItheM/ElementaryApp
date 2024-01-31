@@ -86,6 +86,19 @@ public class DrawingView extends View {
         return true;
     }
 
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        int width = getMeasuredWidth();
+        int height = getMeasuredHeight();
+
+        int size = Math.min(width, height); // Get the smaller dimension
+
+        // Set both width and height to the smaller dimension to make it square
+        setMeasuredDimension(size, size);
+    }
+
     public void clearCanvas() {
         canvas.drawColor(Color.WHITE);
         invalidate();

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="email">
+        <item name="android:background">@color/text_edit_background</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:drawableLeft">@drawable/ic_baseline_email_24</item>
+        <item name="drawableTint">@color/placeholder_color</item>
+        <item name="android:textColorHint">@color/placeholder_color</item>
+        <item name="android:fontFamily">@font/plusjakartasansbold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="drawableSize">14dp</item>
+        <item name="android:drawablePadding">5dp</item>
+    </style>
+</resources>
