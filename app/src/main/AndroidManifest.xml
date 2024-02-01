@@ -16,13 +16,13 @@
         android:theme="@style/Theme.ElementaryApp"
         tools:targetApi="31">
         <activity
-            android:name=".content.HomeActivity"
-            android:exported="false" />
+            android:name=".content.MenuMainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".register.SignInActivity"
             android:exported="true"
-            android:label="@string/title_activity_sign_up"
-            android:theme="@style/Theme.ElementaryApp">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

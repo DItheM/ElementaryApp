@@ -8,7 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.elementaryapp.R;
-import com.example.elementaryapp.content.HomeActivity;
+import com.example.elementaryapp.content.HomeFragment;
+import com.example.elementaryapp.content.MenuMainActivity;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -22,7 +23,7 @@ public class SignInActivity extends AppCompatActivity {
         startLearningBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
+                Intent intent = new Intent(SignInActivity.this, MenuMainActivity.class);
                 startActivity(intent);
             }
         });

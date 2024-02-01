@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp"
-    tools:context=".content.HomeActivity">
+    android:background="@color/white"
+    android:padding="20dp"
+    tools:context=".content.HomeFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -92,15 +93,27 @@
                         android:id="@+id/textView10"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
                         android:fontFamily="@font/plusjakartasansmedium"
                         android:gravity="center"
                         android:text="Dive into the magical world of numbers where learning math is a delightful adventure! "
                         android:textColor="@color/black"
                         android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/btnBack"
+                        android:fontFamily="@font/plusjakartasansmedium"
+                        android:text="Learn"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView10" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
@@ -144,15 +157,27 @@
                         android:id="@+id/textView11"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
                         android:fontFamily="@font/plusjakartasansmedium"
                         android:gravity="center"
                         android:text="Embark on a Sinhala language journey filled with colorful characters and exciting activities."
                         android:textColor="@color/black"
                         android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+                    <Button
+                        android:id="@+id/button2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/btnBack"
+                        android:fontFamily="@font/plusjakartasansmedium"
+                        android:text="Learn"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView11" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
@@ -196,15 +221,27 @@
                         android:id="@+id/textView12"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
                         android:fontFamily="@font/plusjakartasansmedium"
                         android:gravity="center"
                         android:text="Join our young environmentalists on a quest to discover and appreciate the wonders of nature. "
                         android:textColor="@color/black"
                         android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+                    <Button
+                        android:id="@+id/button3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/btnBack"
+                        android:fontFamily="@font/plusjakartasansmedium"
+                        android:text="Learn"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -217,6 +254,7 @@
         android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -225,24 +263,28 @@
 
         <ImageView
             android:id="@+id/imageView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/baseline_keyboard_double_arrow_left_24" />
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            app:srcCompat="@drawable/baseline_keyboard_double_arrow_left_24"
+            app:tint="@color/placeholder" />
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
             android:fontFamily="@font/plusjakartasansbold"
             android:text="Swipe"
-            android:textColor="@color/subText" />
+            android:textColor="@color/placeholder"
+            android:textSize="12sp" />
 
         <ImageView
             android:id="@+id/imageView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
             android:rotation="180"
-            app:srcCompat="@drawable/baseline_keyboard_double_arrow_left_24" />
+            app:srcCompat="@drawable/baseline_keyboard_double_arrow_left_24"
+            app:tint="@color/placeholder" />
 
     </LinearLayout>
 
