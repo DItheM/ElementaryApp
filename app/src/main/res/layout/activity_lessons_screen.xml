@@ -69,11 +69,32 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="20dp"
+        android:fadingEdgeLength="80dp"
+        android:overScrollMode="always"
+        android:paddingTop="20dp"
+        android:requiresFadingEdge="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/choose_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
+    <Button
+        android:id="@+id/choose_btn"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/btnBack"
+        android:fontFamily="@font/plusjakartasansbold"
+        android:includeFontPadding="true"
+        android:padding="20dp"
+        android:text="Choose"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
