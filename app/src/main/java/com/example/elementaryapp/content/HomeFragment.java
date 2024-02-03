@@ -32,6 +32,27 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), LessonsScreenActivity.class);
+                intent.putExtra("type", 0);
+                startActivity(intent);
+            }
+        });
+
+        //set on click listener for sinhala button button
+        sinhalaBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), LessonsScreenActivity.class);
+                intent.putExtra("type", 1);
+                startActivity(intent);
+            }
+        });
+
+        //set on click listener for environment button button
+        envBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), LessonsScreenActivity.class);
+                intent.putExtra("type", 2);
                 startActivity(intent);
             }
         });

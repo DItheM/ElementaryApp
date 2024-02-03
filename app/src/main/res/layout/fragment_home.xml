@@ -105,10 +105,11 @@
 
                     <Button
                         android:id="@+id/math_btn"
-                        android:layout_width="wrap_content"
+                        android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/btnBack"
                         android:fontFamily="@font/plusjakartasansmedium"
+                        android:padding="15dp"
                         android:text="Learn"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -169,10 +170,11 @@
 
                     <Button
                         android:id="@+id/sinhala_btn"
-                        android:layout_width="wrap_content"
+                        android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/btnBack"
                         android:fontFamily="@font/plusjakartasansmedium"
+                        android:padding="15dp"
                         android:text="Learn"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -233,10 +235,11 @@
 
                     <Button
                         android:id="@+id/env_btn"
-                        android:layout_width="wrap_content"
+                        android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/btnBack"
                         android:fontFamily="@font/plusjakartasansmedium"
+                        android:padding="15dp"
                         android:text="Learn"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

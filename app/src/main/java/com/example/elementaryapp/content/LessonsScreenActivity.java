@@ -2,12 +2,13 @@ package com.example.elementaryapp.content;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import com.example.elementaryapp.R;
@@ -34,22 +35,51 @@ public class LessonsScreenActivity extends AppCompatActivity {
 
         Services.onPressBack(this);
 
+        Intent intent = getIntent();
+        // Retrieve data from the Intent
+        int type = intent.getIntExtra("type", 0);
+
         recyclerView = findViewById(R.id.recycler_view);
         chooseBtn = findViewById(R.id.choose_btn);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+//        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
+        recyclerView.setLayoutManager(layoutManager);
 
         list = new ArrayList<>();
+        int bgClr;
 
-        Lesson lesson_1 = new Lesson(R.drawable.draw_img, "Write numbers 1 to 9", "Delightful introduction to the world of numbers");
-        list.add(lesson_1);
+        if (type == 0) {
+            Lesson lesson_1 = new Lesson(R.drawable.draw_img, "Write numbers 1 to 9", "Delightful introduction to the world of numbers", "draw", 0);
+            list.add(lesson_1);
 
-        Lesson lesson_2 = new Lesson(R.drawable.i_2, "Watch tutorials", "Step-by-step video tutorials on how to write numbers 1 to 9");
-        list.add(lesson_2);
+            Lesson lesson_2 = new Lesson(R.drawable.i_2, "Watch tutorials", "Step-by-step video tutorials on how to write numbers 1 to 9", "tutorial", 0);
+            list.add(lesson_2);
 
-        Lesson lesson_3 = new Lesson(R.drawable.test_png, "Get a test", "Challenge young minds with a series of engaging tasks");
-        list.add(lesson_3);
+            Lesson lesson_3 = new Lesson(R.drawable.test_png, "Get a test", "Challenge young minds with a series of engaging tasks", "task", -1);
+            list.add(lesson_3);
 
-        adapter = new RecycleViewAdapterLessons(this, list, recyclerView);
+            bgClr = R.color.bgClr_1;
+        } else if (type == 1) {
+            Lesson lesson_1 = new Lesson(R.drawable.draw_img, "Write sinhala letters", "Delightful introduction to the world of sinhala letters", "draw", 1);
+            list.add(lesson_1);
+
+            Lesson lesson_2 = new Lesson(R.drawable.i_2, "Watch tutorials", "Step-by-step video tutorials on how to write sinhala letters", "tutorial", 1);
+            list.add(lesson_2);
+
+            bgClr = R.color.bgClr_3;
+        } else {
+            Lesson lesson_1 = new Lesson(R.drawable.animals, "Identify animals", "Delightful introduction to the world of animals", "detect", 0);
+            list.add(lesson_1);
+
+            Lesson lesson_2 = new Lesson(R.drawable.objects, "Identify objects", "Delightful introduction to the world of objects", "detect", 1);
+            list.add(lesson_2);
+
+            bgClr = R.color.bgClr_2;
+        }
+
+
+        adapter = new RecycleViewAdapterLessons(this, list, recyclerView, bgClr, chooseBtn);
         recyclerView.setAdapter(adapter);
 
         // Add an OnScrollListener to highlight the center item
@@ -66,6 +96,20 @@ public class LessonsScreenActivity extends AppCompatActivity {
                     chooseBtn.setEnabled(true);
                     chooseBtn.setTextColor(Color.WHITE);
                     chooseBtn.setBackgroundColor(getResources().getColor(R.color.btnBack));
+                }
+            }
+        });
+
+        chooseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Lesson lesson = adapter.getIntentData();
+                if (lesson != null) {
+                    if (lesson.pageType.equals("draw")) {
+                        Intent intent = new Intent(LessonsScreenActivity.this, DrawScreenActivity.class);
+                        intent.putExtra("type", lesson.subType);
+                        startActivity(intent);
+                    }
                 }
             }
         });

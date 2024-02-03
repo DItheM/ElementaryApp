@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".content.DrawScreenActivity"
             android:exported="true">
 
             <!-- <intent-filter> -->
