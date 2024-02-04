@@ -17,4 +17,6 @@
     <color name="bgClr_1">#ff9051</color>
     <color name="bgClr_2">#714f8c</color>
     <color name="bgClr_3">#80bdff</color>
+
+    <color name="rule_clr">#94007AFF</color>
 </resources>

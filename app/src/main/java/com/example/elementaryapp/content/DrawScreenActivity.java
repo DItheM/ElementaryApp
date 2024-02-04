@@ -2,6 +2,8 @@ package com.example.elementaryapp.content;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,9 +14,12 @@ import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.util.Log;
 import android.widget.Toast;
@@ -39,6 +44,8 @@ public class DrawScreenActivity extends AppCompatActivity {
     private DrawingView drawingView;
     RecycleViewAdapterLetters adapter;
 
+    ConstraintLayout sinhalaBg, numberBg;
+
     RecyclerView recyclerView;
 
     ArrayList<Letter> list;
@@ -61,6 +68,9 @@ public class DrawScreenActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycler_view);
 
+        numberBg = findViewById(R.id.number_drawer_bg);
+        sinhalaBg = findViewById(R.id.sinhala_drawer_bg);
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.HORIZONTAL);
         recyclerView.setLayoutManager(layoutManager);
@@ -73,11 +83,15 @@ public class DrawScreenActivity extends AppCompatActivity {
                 list.add(new Letter(String.valueOf(i)));
             }
             bgClr = R.color.bgClr_1;
+
+            sinhalaBg.setVisibility(View.GONE);
         } else {
             for (int i = 11; i <= 20; i++) {
                 list.add(new Letter(String.valueOf(i)));
             }
             bgClr = R.color.bgClr_3;
+
+            numberBg.setVisibility(View.GONE);
         }
 
         selectedLetter = list.get(0).letter;
@@ -134,7 +148,7 @@ public class DrawScreenActivity extends AppCompatActivity {
 
                     // Build the HTTP request
                     Request request = new Request.Builder()
-                            .url("http://192.168.5.62:5000/predict")
+                            .url(Services.ipAddress + "/predict")
                             .post(requestBody)
                             .build();
 

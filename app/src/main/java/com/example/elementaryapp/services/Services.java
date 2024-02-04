@@ -13,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.elementaryapp.R;
 
 public class Services {
+
+    public static String ipAddress = "http://192.168.5.62:5000";
+
     //back button functionality
     public static void onPressBack (Activity activity) {
         ImageView btn = activity.findViewById(R.id.back_btn);
