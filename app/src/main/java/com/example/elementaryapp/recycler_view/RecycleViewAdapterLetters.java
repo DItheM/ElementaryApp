@@ -32,6 +32,16 @@ public class RecycleViewAdapterLetters extends RecyclerView.Adapter<ViewHolderLe
     int bgClr;
     RecyclerView recyclerView;
 
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public OnItemClickListener itemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.itemClickListener = listener;
+    }
+
 
     //constructor
     public RecycleViewAdapterLetters(Context context, ArrayList<Letter> list, RecyclerView recyclerView, int bgClr) {
@@ -68,6 +78,15 @@ public class RecycleViewAdapterLetters extends RecyclerView.Adapter<ViewHolderLe
     public int getItemCount() {
         return list.size();
     }
+
+    public Letter getSelectedLetter() {
+        if (selectedPosition != RecyclerView.NO_POSITION) {
+            return list.get(selectedPosition);
+        } else {
+            return null;
+        }
+    }
+
 }
 
 //viewholder for all the item elements and functions
@@ -88,9 +107,28 @@ class ViewHolderLetters extends RecyclerView.ViewHolder{
             @Override
             public void onClick(View v) {
                 adapter.selectedPosition = getAdapterPosition();
+
+                if (adapter.itemClickListener != null) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        adapter.itemClickListener.onItemClick(position);
+                    }
+                }
                 adapter.notifyDataSetChanged();
             }
         });
+
+//        itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (adapter.itemClickListener != null) {
+//                    int position = getAdapterPosition();
+//                    if (position != RecyclerView.NO_POSITION) {
+//                        adapter.itemClickListener.onItemClick(position);
+//                    }
+//                }
+//            }
+//        });
 
     }
 
