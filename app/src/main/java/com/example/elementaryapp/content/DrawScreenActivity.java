@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +51,51 @@ public class DrawScreenActivity extends AppCompatActivity {
 
     ArrayList<Letter> list;
     String selectedLetter;
+    Boolean isSinhala;
+
+    // Sinhala alphabet in ISCII
+    String[] sinhalaAlphabetISCII = {
+            "w", "wd", "we", "wE", "b", "B",
+            "W", "W!", "R", "RD", "Ì", "Ï",
+            "t", "tA", "ft", "T", "´", "T!",
+
+            "l", "L", ".", ">", "Ù", "Õ",
+            "p", "P", "c", "®", "[", "c",
+            "g", "G", "v", "V", "K", "~",
+            ";", ":", "o", "O", "k", "|",
+            "m", "M", "n", "N", "u", "U",
+            "h", "r", ",", "j",
+            "Y", "I", "i", "y", "<", "*"
+    };
+
+    int[] sinhalaAlphabetIndex = {
+            0, 1, 2, 3, 4, 5,
+            6, 7, 8, 9, 10, 11,
+            12, 13, 14, 15, 16, 17,
+
+            18, 19, 20, 21, 22, 23,
+            24, 25, 26, 27, 28, 29,
+            30, 31, 32, 33, 34, 35,
+            36, 37, 38, 39, 40, 41,
+            42, 43, 44, 45, 46, 47,
+            48, 49, 50, 51,
+            52, 53, 54, 55, 56, 57
+    };
+
+
+    String[] sinhalaAlphabet = {
+            "අ", "ආ", "ඇ", "ඈ", "ඉ", "ඊ",
+            "උ", "ඌ", "ඍ", "ඎ", "ඏ", "ඐ",
+            "එ", "ඒ", "ඓ", "ඔ", "ඕ", "ඖ",
+
+            "ක", "ඛ", "ග", "ඝ", "ඞ", "ඟ",
+            "ච", "ඡ", "ජ", "ඣ", "ඤ", "ඦ",
+            "ට", "ඨ", "ඩ", "ඪ", "ණ", "ඬ",
+            "ත", "ථ", "ද", "ධ", "න", "ඳ",
+            "ප", "ඵ", "බ", "භ", "ම", "ඹ",
+            "ය", "ර", "ල", "ව",
+            "ශ", "ෂ", "ස", "හ", "ළ", "ෆ"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,19 +130,21 @@ public class DrawScreenActivity extends AppCompatActivity {
             }
             bgClr = R.color.bgClr_1;
 
+            isSinhala = false;
             sinhalaBg.setVisibility(View.GONE);
         } else {
-            for (int i = 11; i <= 20; i++) {
-                list.add(new Letter(String.valueOf(i)));
+            for (int i = 0; i <= sinhalaAlphabetISCII.length - 1; i++) {
+                list.add(new Letter(sinhalaAlphabetISCII[i], sinhalaAlphabet[i], sinhalaAlphabetIndex[i]));
             }
             bgClr = R.color.bgClr_3;
 
+            isSinhala = true;
             numberBg.setVisibility(View.GONE);
         }
 
         selectedLetter = list.get(0).letter;
 
-        adapter = new RecycleViewAdapterLetters(this, list, recyclerView, bgClr);
+        adapter = new RecycleViewAdapterLetters(this, list, recyclerView, bgClr, isSinhala);
         recyclerView.setAdapter(adapter);
 
         clearButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.btnBack)));
@@ -107,7 +155,11 @@ public class DrawScreenActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new RecycleViewAdapterLetters.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                selectedLetter = list.get(position).letter;
+                if (isSinhala) {
+                    selectedLetter = list.get(position).sinhala;
+                } else {
+                    selectedLetter = list.get(position).letter;
+                }
                 Toast.makeText(DrawScreenActivity.this, "You selected: "+selectedLetter, Toast.LENGTH_SHORT).show();
             }
         });
@@ -118,6 +170,7 @@ public class DrawScreenActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Call the clearCanvas() method of your DrawingView
                 drawingView.clearCanvas();
+                Toast.makeText(DrawScreenActivity.this, "Board cleared", Toast.LENGTH_SHORT).show();
             }
         });
 

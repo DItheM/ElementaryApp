@@ -2,6 +2,7 @@ package com.example.elementaryapp.recycler_view;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ public class RecycleViewAdapterLetters extends RecyclerView.Adapter<ViewHolderLe
 
     Context context;
     ArrayList<Letter> list;
+    Boolean isSinhala;
 
     int selectedPosition = 0;
     int bgClr;
@@ -44,11 +46,12 @@ public class RecycleViewAdapterLetters extends RecyclerView.Adapter<ViewHolderLe
 
 
     //constructor
-    public RecycleViewAdapterLetters(Context context, ArrayList<Letter> list, RecyclerView recyclerView, int bgClr) {
+    public RecycleViewAdapterLetters(Context context, ArrayList<Letter> list, RecyclerView recyclerView, int bgClr, Boolean isSinhala) {
         this.context = context;
         this.list = list;
         this.recyclerView = recyclerView;
         this.bgClr = bgClr;
+        this.isSinhala = isSinhala;
     }
 
     @NonNull
@@ -62,15 +65,25 @@ public class RecycleViewAdapterLetters extends RecyclerView.Adapter<ViewHolderLe
     @Override
     public void onBindViewHolder(@NonNull ViewHolderLetters holder, int position) {
         Letter letter = list.get(position);
-        holder.number.setText(letter.letter);
+
+
+        if (isSinhala) {
+            holder.number.setVisibility(View.GONE);
+            holder.sinhala.setText(letter.letter);
+        } else {
+            holder.sinhala.setVisibility(View.GONE);
+            holder.number.setText(letter.letter);
+        }
 
         // Set background color based on the selected position
         if (selectedPosition == position) {
             holder.cardView.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), bgClr)); // Change the color as needed
             holder.number.setTextColor(Color.WHITE);
+            holder.sinhala.setTextColor(Color.WHITE);
         } else {
             holder.cardView.setCardBackgroundColor(Color.WHITE); // Reset to default
             holder.number.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.Heading));
+            holder.sinhala.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.Heading));
         }
     }
 
@@ -79,20 +92,12 @@ public class RecycleViewAdapterLetters extends RecyclerView.Adapter<ViewHolderLe
         return list.size();
     }
 
-    public Letter getSelectedLetter() {
-        if (selectedPosition != RecyclerView.NO_POSITION) {
-            return list.get(selectedPosition);
-        } else {
-            return null;
-        }
-    }
-
 }
 
 //viewholder for all the item elements and functions
 class ViewHolderLetters extends RecyclerView.ViewHolder{
 
-    TextView number;
+    TextView number, sinhala;
     CardView cardView;
 
     private RecycleViewAdapterLetters adapter;
@@ -101,6 +106,7 @@ class ViewHolderLetters extends RecyclerView.ViewHolder{
         super(itemView);
 
         number = itemView.findViewById(R.id.number);
+        sinhala = itemView.findViewById(R.id.sinhala);
         cardView = itemView.findViewById(R.id.card_view);
 
         itemView.setOnClickListener(new View.OnClickListener() {
