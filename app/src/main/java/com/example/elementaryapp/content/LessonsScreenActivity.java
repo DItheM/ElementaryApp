@@ -109,6 +109,10 @@ public class LessonsScreenActivity extends AppCompatActivity {
                         Intent intent = new Intent(LessonsScreenActivity.this, DrawScreenActivity.class);
                         intent.putExtra("type", lesson.subType);
                         startActivity(intent);
+                    } else if (lesson.pageType.equals("detect")) {
+                        Intent intent = new Intent(LessonsScreenActivity.this, IdentifyScreenActivity.class);
+                        intent.putExtra("type", lesson.subType);
+                        startActivity(intent);
                     }
                 }
             }

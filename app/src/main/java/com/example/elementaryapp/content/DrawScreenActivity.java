@@ -53,6 +53,8 @@ public class DrawScreenActivity extends AppCompatActivity {
     String selectedLetter;
     Boolean isSinhala;
 
+    String url;
+
     // Sinhala alphabet in ISCII
     String[] sinhalaAlphabetISCII = {
             "w", "wd", "we", "wE", "b", "B",
@@ -132,6 +134,7 @@ public class DrawScreenActivity extends AppCompatActivity {
 
             isSinhala = false;
             sinhalaBg.setVisibility(View.GONE);
+            url = Services.ipAddress + "/predict_number";
         } else {
             for (int i = 0; i <= sinhalaAlphabetISCII.length - 1; i++) {
                 list.add(new Letter(sinhalaAlphabetISCII[i], sinhalaAlphabet[i], sinhalaAlphabetIndex[i]));
@@ -140,6 +143,7 @@ public class DrawScreenActivity extends AppCompatActivity {
 
             isSinhala = true;
             numberBg.setVisibility(View.GONE);
+            url = Services.ipAddress + "/predict_sinhala";
         }
 
         selectedLetter = list.get(0).letter;
@@ -201,7 +205,7 @@ public class DrawScreenActivity extends AppCompatActivity {
 
                     // Build the HTTP request
                     Request request = new Request.Builder()
-                            .url(Services.ipAddress + "/predict")
+                            .url(url)
                             .post(requestBody)
                             .build();
 

@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+
 
     <application
         android:allowBackup="true"
@@ -16,8 +20,13 @@
         android:theme="@style/Theme.ElementaryApp"
         tools:targetApi="31">
         <activity
+            android:name=".content.IdentifyScreenActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".content.LessonsScreenActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".content.MenuMainActivity"
             android:exported="false"
@@ -34,14 +43,8 @@
         </activity>
         <activity
             android:name=".content.DrawScreenActivity"
-            android:exported="true">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+            android:exported="false"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 
