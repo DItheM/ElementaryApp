@@ -1,10 +1,14 @@
 package com.example.elementaryapp.content;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.Manifest;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,6 +25,9 @@ import androidx.core.content.ContextCompat;
 import com.example.elementaryapp.R;
 import com.example.elementaryapp.services.Services;
 import com.google.common.util.concurrent.ListenableFuture;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -171,14 +178,65 @@ public class IdentifyScreenActivity extends AppCompatActivity {
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 // Handle the server's response
                 if (response.isSuccessful()) {
+                    imageFile.delete();
                     // Server successfully received the image
                     // You can process the server's response here
                     String responseBody = response.body().string();
-                    // Update UI on the main thread if needed
-                    runOnUiThread(() -> {
-                        // Handle the response on the UI thread
-                    });
+                    // Parse the JSON response
+                    try {
+                        JSONObject json = new JSONObject(responseBody);
+                        String prediction = json.getString("prediction");
+                        String confidence = json.getString("confidence");
+
+                        runOnUiThread(() -> {
+                            ShowAlertDialog(type, prediction, confidence);
+                        });
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
+            }
+        });
+    }
+
+    public void ShowAlertDialog(int type, String predictionVal, String confidenceVal) {
+        AlertDialog alertDialog;
+
+        // Create a dialog builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.TransparentAlertDialog);
+
+        // Inflate the custom layout
+        View customLayout = getLayoutInflater().inflate(R.layout.identify_dialog_layout, null);
+        builder.setView(customLayout);
+
+        // Set up your custom views and actions
+        TextView prediction = customLayout.findViewById(R.id.prediction);
+        TextView confidence = customLayout.findViewById(R.id.confidence);
+        ImageView imageView = customLayout.findViewById(R.id.dialog_image);
+        Button btn = customLayout.findViewById(R.id.button);
+
+        String capitalizedPredictionVal = predictionVal.substring(0, 1).toUpperCase() + predictionVal.substring(1);
+        String processedConfidenceVal = "Confidence level is " + confidenceVal;
+
+        prediction.setText(capitalizedPredictionVal);
+        confidence.setText(processedConfidenceVal);
+
+        if (type == 0) {
+            imageView.setImageResource(R.drawable.explorer);
+        } else {
+            imageView.setImageResource(R.drawable.try_again);
+        }
+
+        // Create and show the dialog
+        alertDialog = builder.create();
+        alertDialog.show();
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle button click
+                // Dismiss the dialog or perform any other action
+                alertDialog.dismiss();
             }
         });
     }

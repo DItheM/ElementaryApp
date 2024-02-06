@@ -118,7 +118,7 @@ class ViewHolderLessons extends RecyclerView.ViewHolder{
         super(itemView);
 
         header = itemView.findViewById(R.id.header);
-        subText = itemView.findViewById(R.id.sub_text);
+        subText = itemView.findViewById(R.id.confidence);
         image = itemView.findViewById(R.id.image);
         cardView = itemView.findViewById(R.id.card_view);
 
