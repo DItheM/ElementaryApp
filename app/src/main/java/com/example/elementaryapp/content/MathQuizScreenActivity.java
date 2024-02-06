@@ -54,7 +54,10 @@ public class MathQuizScreenActivity extends AppCompatActivity {
         ans_3_bg = findViewById(R.id.ans_3_bg);
 
         skip_btn = findViewById(R.id.skip_btn);
-        skip_btn.setOnClickListener(v -> createQuiz());
+        skip_btn.setOnClickListener(v -> {
+            createQuiz();
+            Toast.makeText(this, "Skipped", Toast.LENGTH_SHORT).show();
+        });
 
         createQuiz();
     }
