@@ -5,6 +5,8 @@ import androidx.cardview.widget.CardView;
 
 import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +31,7 @@ public class MathQuizScreenActivity extends AppCompatActivity {
     };
 
     Random random = new Random();
+    private static final int TIMEOUT_DURATION = 1000;
 
 
     @Override
@@ -51,11 +54,7 @@ public class MathQuizScreenActivity extends AppCompatActivity {
         ans_3_bg = findViewById(R.id.ans_3_bg);
 
         skip_btn = findViewById(R.id.skip_btn);
-
         skip_btn.setOnClickListener(v -> createQuiz());
-        ans_1_bg.setOnClickListener(v -> checkAllAnswers("ans_1"));
-        ans_2_bg.setOnClickListener(v -> checkAllAnswers("ans_2"));
-        ans_3_bg.setOnClickListener(v -> checkAllAnswers("ans_3"));
 
         createQuiz();
     }
@@ -81,6 +80,8 @@ public class MathQuizScreenActivity extends AppCompatActivity {
     }
 
     public void createQuiz() {
+        addClickListeners();
+
         String type = types[getRandomType()];
         int n_1, n_2, trueAnswer, fake_ans_1, fake_ans_2;
 
@@ -143,6 +144,9 @@ public class MathQuizScreenActivity extends AppCompatActivity {
         if (answerName.equals(clickedAnswerName)) {
             if (!val.equals(correctAnswer)) {
                 cardView.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.incorrect)));
+                changeBtn(false);
+            } else {
+                changeBtn(true);
             }
         }
     }
@@ -151,12 +155,59 @@ public class MathQuizScreenActivity extends AppCompatActivity {
         checkAnswer(ans_1, ans_1_bg, "ans_1", clickedAnswerName);
         checkAnswer(ans_2, ans_2_bg, "ans_2", clickedAnswerName);
         checkAnswer(ans_3, ans_3_bg, "ans_3", clickedAnswerName);
+        removeClickListeners();
+        startTimeout();
+    }
+
+    public void changeBtn(Boolean isCorrect) {
+        skip_btn.setEnabled(false);
+        skip_btn.setTextColor(getResources().getColor(R.color.white));
+        if (isCorrect) {
+            skip_btn.setBackgroundColor(getResources().getColor(R.color.correct));
+            skip_btn.setText("Correct!");
+        } else {
+            skip_btn.setBackgroundColor(getResources().getColor(R.color.incorrect));
+            skip_btn.setText("Incorrect!");
+        }
+
     }
 
     public void resetAnswers() {
         ans_1_bg.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.bgClr_1)));
         ans_2_bg.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.bgClr_1)));
         ans_3_bg.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.bgClr_1)));
+        skip_btn.setBackgroundColor(getResources().getColor(R.color.btnBack));
+        skip_btn.setText("Skip");
+        skip_btn.setEnabled(true);
+    }
+
+    public void addClickListeners() {
+        ans_1_bg.setOnClickListener(v -> checkAllAnswers("ans_1"));
+        ans_2_bg.setOnClickListener(v -> checkAllAnswers("ans_2"));
+        ans_3_bg.setOnClickListener(v -> checkAllAnswers("ans_3"));
+    }
+
+    public void removeClickListeners() {
+        ans_1_bg.setOnClickListener(null);
+        ans_2_bg.setOnClickListener(null);
+        ans_3_bg.setOnClickListener(null);
+    }
+
+    private final Handler timeoutHandler = new Handler(Looper.getMainLooper());
+    private final Runnable timeoutRunnable = new Runnable() {
+        @Override
+        public void run() {
+            stopTimeout();
+            createQuiz();
+        }
+    };
+
+    private void startTimeout() {
+        timeoutHandler.postDelayed(timeoutRunnable, TIMEOUT_DURATION);
+    }
+
+    private void stopTimeout() {
+        timeoutHandler.removeCallbacks(timeoutRunnable);
     }
 
 
