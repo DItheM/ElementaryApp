@@ -56,7 +56,7 @@ public class LessonsScreenActivity extends AppCompatActivity {
             Lesson lesson_2 = new Lesson(R.drawable.i_2, "Watch tutorials", "Step-by-step video tutorials on how to write numbers 1 to 9", "tutorial", 0);
             list.add(lesson_2);
 
-            Lesson lesson_3 = new Lesson(R.drawable.test_png, "Get a test", "Challenge young minds with a series of engaging tasks", "task", -1);
+            Lesson lesson_3 = new Lesson(R.drawable.test_png, "Get a test", "Challenge young minds with a series of engaging tasks", "quiz", -1);
             list.add(lesson_3);
 
             bgClr = R.color.bgClr_1;
@@ -112,6 +112,9 @@ public class LessonsScreenActivity extends AppCompatActivity {
                     } else if (lesson.pageType.equals("detect")) {
                         Intent intent = new Intent(LessonsScreenActivity.this, IdentifyScreenActivity.class);
                         intent.putExtra("type", lesson.subType);
+                        startActivity(intent);
+                    } else if (lesson.pageType.equals("quiz")) {
+                        Intent intent = new Intent(LessonsScreenActivity.this, MathQuizScreenActivity.class);
                         startActivity(intent);
                     }
                 }

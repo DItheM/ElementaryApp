@@ -16,7 +16,7 @@
         android:layout_marginBottom="20dp"
         android:fadingEdgeLength="80dp"
         android:requiresFadingEdge="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/card_view"
+        app:layout_constraintBottom_toTopOf="@+id/num_1_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/back_btn">
@@ -86,7 +86,7 @@
     </ScrollView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_view"
+        android:id="@+id/num_1_bg"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"

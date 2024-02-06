@@ -120,7 +120,7 @@ class ViewHolderLessons extends RecyclerView.ViewHolder{
         header = itemView.findViewById(R.id.header);
         subText = itemView.findViewById(R.id.confidence);
         image = itemView.findViewById(R.id.image);
-        cardView = itemView.findViewById(R.id.card_view);
+        cardView = itemView.findViewById(R.id.num_1_bg);
 
 //        adapter.chooseBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override

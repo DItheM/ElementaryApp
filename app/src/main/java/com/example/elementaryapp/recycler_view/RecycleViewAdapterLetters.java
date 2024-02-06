@@ -2,22 +2,17 @@ package com.example.elementaryapp.recycler_view;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.elementaryapp.R;
-import com.example.elementaryapp.classes.Lesson;
 import com.example.elementaryapp.classes.Letter;
 
 import java.util.ArrayList;
@@ -107,7 +102,7 @@ class ViewHolderLetters extends RecyclerView.ViewHolder{
 
         number = itemView.findViewById(R.id.number);
         sinhala = itemView.findViewById(R.id.sinhala);
-        cardView = itemView.findViewById(R.id.card_view);
+        cardView = itemView.findViewById(R.id.num_1_bg);
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

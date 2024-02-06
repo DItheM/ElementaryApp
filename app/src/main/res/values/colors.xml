@@ -19,4 +19,7 @@
     <color name="bgClr_3">#80bdff</color>
 
     <color name="rule_clr">#94007AFF</color>
+
+    <color name="correct">#4CAF50</color>
+    <color name="incorrect">#E91E1E</color>
 </resources>
