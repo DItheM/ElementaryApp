@@ -1,11 +1,7 @@
 package com.example.elementaryapp.register;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.AlertDialog;
@@ -13,9 +9,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
@@ -23,15 +17,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.window.OnBackInvokedDispatcher;
 
 import com.example.elementaryapp.R;
 import com.example.elementaryapp.content.MenuMainActivity;
 import com.example.elementaryapp.database.DatabaseHelper;
 
-import java.io.File;
 import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -42,17 +33,13 @@ public class RegisterActivity extends AppCompatActivity {
     Button uploadPfpBtn, createProfileBtn;
     AlertDialog alertDialog;
     int imageId = R.drawable.profile_default;
-    private DrawerLayout drawerLayout;
-
-    private ActivityResultLauncher<Intent> imagePickerLauncher;
-    private ActivityResultLauncher<Intent> cropLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        createProfileBtn = findViewById(R.id.create_profile_btn);
+        createProfileBtn = findViewById(R.id.save_btn);
         uploadPfpBtn = findViewById(R.id.upload_pfp_btn);
         nameInput = findViewById(R.id.nameInput);
         pfp = findViewById(R.id.pfp);
@@ -102,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
         uploadPfpBtn.setOnClickListener(v -> ShowAlertDialog());
     }
 
-    public void addClickListeners(ImageView imageView) {
+    public void addClickListeners(ImageView imageView, String resourceId) {
         imageView.setOnClickListener(v -> {
             Drawable drawable = imageView.getDrawable();
             if (drawable != null) {
@@ -110,9 +97,9 @@ public class RegisterActivity extends AppCompatActivity {
                     BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
                     Bitmap bitmap = bitmapDrawable.getBitmap();
                     pfp.setImageBitmap(bitmap);
-                    getImageId(imageView);
                 }
             }
+            getImageId(resourceId);
             alertDialog.dismiss();
         });
     }
@@ -145,11 +132,11 @@ public class RegisterActivity extends AppCompatActivity {
                 alertDialog.dismiss();
             }
         });
-        addClickListeners(img_1);
-        addClickListeners(img_2);
-        addClickListeners(img_3);
-        addClickListeners(img_4);
-        addClickListeners(img_5);
+        addClickListeners(img_1, "img_1");
+        addClickListeners(img_2, "img_2");
+        addClickListeners(img_3, "img_3");
+        addClickListeners(img_4, "img_4");
+        addClickListeners(img_5, "img_5");
     }
 
     // Method to open the image picker
@@ -158,11 +145,7 @@ public class RegisterActivity extends AppCompatActivity {
 //        imagePickerLauncher.launch(intent);
 //    }
 
-    public void getImageId(ImageView imageView) {
-        // Get the ID of the clicked ImageView
-        int resourceId = imageView.getId();
-        // Get the resource name associated with the ID
-        String resourceName = getResources().getResourceName(resourceId);
+    public void getImageId(String resourceName) {
         if (Objects.equals(resourceName, "img_2")) {
             imageId = R.drawable.pfp_1;
         } else if (Objects.equals(resourceName, "img_3")) {
@@ -182,6 +165,7 @@ public class RegisterActivity extends AppCompatActivity {
             databaseHelper.insertData("1", inputText, imageId);
             Intent intent = new Intent(RegisterActivity.this, MenuMainActivity.class);
             startActivity(intent);
+            Toast.makeText(this, "Profile created", Toast.LENGTH_SHORT).show();
             finish();
         }
     }

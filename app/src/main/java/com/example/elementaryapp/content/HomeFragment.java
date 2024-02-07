@@ -4,24 +4,38 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.elementaryapp.R;
+import com.example.elementaryapp.database.DatabaseHelper;
 import com.example.elementaryapp.services.Services;
 
 public class HomeFragment extends Fragment {
 
     Button mathBtn, sinhalaBtn, envBtn;
+    Cursor cursor;
+    ImageView pfp;
+    DatabaseHelper databaseHelper;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
+
+        databaseHelper = new DatabaseHelper(this.getContext());
+        cursor = databaseHelper.getAllData();
+        pfp = v.findViewById(R.id.pfp);
+        while (cursor.moveToNext()) {
+            pfp.setImageResource(cursor.getInt(2));
+        }
 
         mathBtn = v.findViewById(R.id.math_btn);
         sinhalaBtn = v.findViewById(R.id.sinhala_btn);

@@ -3,8 +3,10 @@ package com.example.elementaryapp.content;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
@@ -96,6 +98,7 @@ public class MenuMainActivity extends AppCompatActivity implements NavigationVie
                         databaseHelper.deleteAllData();
                         Intent intent = new Intent(MenuMainActivity.this, SignInActivity.class);
                         startActivity(intent);
+                        Toast.makeText(MenuMainActivity.this, "Logged out", Toast.LENGTH_SHORT).show();
                         finish();
                     }
                 });

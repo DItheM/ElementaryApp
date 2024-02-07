@@ -19,7 +19,7 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        Button startLearningBtn = findViewById(R.id.create_profile_btn);
+        Button startLearningBtn = findViewById(R.id.save_btn);
         databaseHelper = new DatabaseHelper(this);
 
         if(databaseHelper.isLoggedIn()) {
