@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
@@ -17,10 +18,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 
 import com.example.elementaryapp.R;
+import com.example.elementaryapp.database.DatabaseHelper;
+import com.example.elementaryapp.register.SignInActivity;
 import com.google.android.material.navigation.NavigationView;
 
 public class MenuMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    DatabaseHelper databaseHelper;
     private DrawerLayout drawerLayout;
 
     ProgressDialog progressDialog;
@@ -32,8 +36,18 @@ public class MenuMainActivity extends AppCompatActivity implements NavigationVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drawer_layout);
 
+        databaseHelper = new DatabaseHelper(this);
+
         progressDialog = new ProgressDialog(this);
         builder = new AlertDialog.Builder(this);
+
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                // Handle the back button event
+            }
+        };
+        this.getOnBackPressedDispatcher().addCallback(this, callback);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -63,7 +77,7 @@ public class MenuMainActivity extends AppCompatActivity implements NavigationVie
         } else if (itemId == R.id.about) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutFragment()).commit();
         } else if (itemId == R.id.logout) {
-//            logOut();
+            logOut();
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -71,57 +85,28 @@ public class MenuMainActivity extends AppCompatActivity implements NavigationVie
 
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            moveTaskToBack(false);
-        }
+    public void logOut () {
+        builder.setCancelable(true);
+        builder.setTitle("Logout");
+        builder.setMessage("Are you sure?");
+        builder.setPositiveButton("Confirm",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        databaseHelper.deleteAllData();
+                        Intent intent = new Intent(MenuMainActivity.this, SignInActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
-
-//    public void logoutAction () {
-//        progressDialog.setMessage("Please wait while Logout...");
-//        progressDialog.setTitle("Logout");
-//        progressDialog.setCanceledOnTouchOutside(false);
-//        progressDialog.show();
-//
-//        user = FirebaseAuth.getInstance().getCurrentUser();
-//        boolean isDeleted = databaseHelper.deleteData(user.getUid());
-//        if (isDeleted) {
-//            mAuth.signOut();
-//            progressDialog.dismiss();
-//            Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
-//
-//            Intent intent = new Intent(MenuMainActivity.this, LoginActivity.class);
-//            startActivity(intent);
-//            finish();
-//        } else {
-//            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
-//            progressDialog.dismiss();
-//        }
-//    }
-
-//    public void logOut () {
-//        builder.setCancelable(true);
-//        builder.setTitle("Logout");
-//        builder.setMessage("Are you sure?");
-//        builder.setPositiveButton("Confirm",
-//                new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        logoutAction();
-//                    }
-//                });
-//        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                dialog.dismiss();
-//            }
-//        });
-//
-//        AlertDialog dialog = builder.create();
-//        dialog.show();
-//    }
 }

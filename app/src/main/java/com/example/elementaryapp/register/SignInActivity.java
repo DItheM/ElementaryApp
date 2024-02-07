@@ -8,24 +8,34 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.elementaryapp.R;
-import com.example.elementaryapp.content.HomeFragment;
 import com.example.elementaryapp.content.MenuMainActivity;
+import com.example.elementaryapp.database.DatabaseHelper;
 
 public class SignInActivity extends AppCompatActivity {
+    DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        Button startLearningBtn = findViewById(R.id.start_learning_btn);
+        Button startLearningBtn = findViewById(R.id.create_profile_btn);
+        databaseHelper = new DatabaseHelper(this);
 
-        startLearningBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SignInActivity.this, MenuMainActivity.class);
-                startActivity(intent);
-            }
-        });
+        if(databaseHelper.isLoggedIn()) {
+            Intent intent = new Intent(SignInActivity.this, MenuMainActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            startLearningBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(SignInActivity.this, RegisterActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        }
+
     }
 }

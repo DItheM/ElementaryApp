@@ -25,7 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("Create Table " + TABLE_NAME + " (" + COL_1 + " TEXT PRIMARY KEY , " + COL_2 + " TEXT , " + COL_3 + " TEXT)");
+        db.execSQL("Create Table " + TABLE_NAME + " (" + COL_1 + " TEXT PRIMARY KEY , " + COL_2 + " TEXT , " + COL_3 + " INT)");
     }
 
     @Override
@@ -35,7 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //data insertion method
-    public boolean insertData (String id, String userName, String pfpURL) {
+    public boolean insertData (String id, String userName, int pfpURL) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1, id);
@@ -53,6 +53,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
+    public Boolean isLoggedIn() {
+        SQLiteDatabase database = this.getReadableDatabase();
+        String countQuery = "SELECT COUNT(*) FROM " + TABLE_NAME;
+        Cursor cursor = database.rawQuery(countQuery, null);
+        int count = 0;
+        if (cursor != null) {
+            cursor.moveToFirst();
+            count = cursor.getInt(0);
+            cursor.close();
+        }
+        return count != 0;
+    }
+
     //data updation method
     public boolean updateUserName (String id, String userName) {
         SQLiteDatabase database = this.getWritableDatabase();
@@ -63,7 +76,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //update pfp url
-    public boolean updatePFPUrl (String id, String pfpURL) {
+    public boolean updatePFPUrl (String id, int pfpURL) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_3, pfpURL);

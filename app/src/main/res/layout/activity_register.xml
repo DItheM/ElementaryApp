@@ -5,19 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".register.SignInActivity">
-
-    <!--    <EditText-->
-    <!--        android:id="@+id/nameInput"-->
-    <!--        style="@style/email"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:ems="10"-->
-    <!--        android:inputType="text"-->
-    <!--        android:text="Name"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+    tools:context=".register.RegisterActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -35,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/plusjakartasansbold"
-            android:text="Easy learning"
+            android:text="Let's create a"
             android:textColor="@color/Heading"
             android:textSize="34sp" />
 
@@ -44,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/plusjakartasansmedium"
-            android:text="for kids"
+            android:text="profile"
             android:textColor="@color/subHead"
             android:textSize="24sp" />
     </LinearLayout>
@@ -78,41 +66,65 @@
             android:textSize="20sp" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/pfp"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView7"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_marginTop="20dp"
+        app:cardCornerRadius="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:srcCompat="@drawable/i_3" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="209dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="40dp"
-        android:fontFamily="@font/plusjakartasansmedium"
-        android:gravity="center_horizontal"
-        android:lines="2"
-        android:text="The easy way to learn for your child"
-        android:textColor="@color/subText"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pfp" />
+        <ImageView
+            android:id="@+id/pfp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/profile_default" />
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/create_profile_btn"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:backgroundTint="@color/btnBack"
         android:fontFamily="@font/plusjakartasansmedium"
-        android:text="Start learning"
+        android:text="Create profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView8" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upload_pfp_btn">
+
+        <EditText
+            android:id="@+id/nameInput"
+            style="@style/name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:hint="Enter Your Name"
+            android:inputType="text" />
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/upload_pfp_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/uploadPfpBtn"
+        android:fontFamily="@font/plusjakartasansbold"
+        android:text="Change Profile Picture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

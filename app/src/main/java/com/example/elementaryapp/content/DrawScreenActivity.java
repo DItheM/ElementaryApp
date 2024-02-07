@@ -44,7 +44,7 @@ public class DrawScreenActivity extends AppCompatActivity {
     RecyclerView recyclerView;
 
     ArrayList<Letter> list;
-    String selectedLetter;
+    Letter selectedLetter;
     Boolean isSinhala;
 
     String url;
@@ -52,7 +52,7 @@ public class DrawScreenActivity extends AppCompatActivity {
     // Sinhala alphabet in ISCII
     String[] sinhalaAlphabetISCII = {
             "w", "wd", "we", "wE", "b", "B",
-            "W", "W!", "R", "RD", "Ì", "Ï",
+            "W", "W!",
             "t", "tA", "ft", "T", "´", "T!",
 
             "l", "L", ".", ">", "Ù", "Õ",
@@ -65,23 +65,23 @@ public class DrawScreenActivity extends AppCompatActivity {
     };
 
     int[] sinhalaAlphabetIndex = {
-            0, 1, 2, 3, 4, 5,
-            6, 7, 8, 9, 10, 11,
-            12, 13, 14, 15, 16, 17,
+            1, 2, 3, 4, 5, 6,
+            7, 415,
+            8, 9, 393, 10, 11, 385,
 
-            18, 19, 20, 21, 22, 23,
-            24, 25, 26, 27, 28, 29,
-            30, 31, 32, 33, 34, 35,
-            36, 37, 38, 39, 40, 41,
-            42, 43, 44, 45, 46, 47,
-            48, 49, 50, 51,
-            52, 53, 54, 55, 56, 57
+            12, 302, 25, 307, 352, 332,
+            38, 437, 51, 423, 418, 428,
+            64, 383, 77, 391, 90, 342,
+            93, 401, 105, 373, 120, 321,
+            134, 395, 149, 363, 164, 353,
+            179, 190, 198, 208,
+            223, 240, 250, 264, 274, 282
     };
 
 
     String[] sinhalaAlphabet = {
             "අ", "ආ", "ඇ", "ඈ", "ඉ", "ඊ",
-            "උ", "ඌ", "ඍ", "ඎ", "ඏ", "ඐ",
+            "උ", "ඌ",
             "එ", "ඒ", "ඓ", "ඔ", "ඕ", "ඖ",
 
             "ක", "ඛ", "ග", "ඝ", "ඞ", "ඟ",
@@ -122,7 +122,7 @@ public class DrawScreenActivity extends AppCompatActivity {
 
         if (type == 0) {
             for (int i = 0; i <= 9; i++) {
-                list.add(new Letter(String.valueOf(i)));
+                list.add(new Letter(String.valueOf(i), null, i));
             }
             bgClr = R.color.bgClr_1;
 
@@ -140,7 +140,7 @@ public class DrawScreenActivity extends AppCompatActivity {
             url = Services.ipAddress + "/predict_sinhala";
         }
 
-        selectedLetter = list.get(0).letter;
+        selectedLetter = list.get(0);
 
         adapter = new RecycleViewAdapterLetters(this, list, recyclerView, bgClr, isSinhala);
         recyclerView.setAdapter(adapter);
@@ -153,12 +153,14 @@ public class DrawScreenActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new RecycleViewAdapterLetters.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
+                selectedLetter = list.get(position);
+                String letter;
                 if (isSinhala) {
-                    selectedLetter = list.get(position).sinhala;
+                    letter = selectedLetter.sinhala;
                 } else {
-                    selectedLetter = list.get(position).letter;
+                    letter = selectedLetter.letter;
                 }
-                Toast.makeText(DrawScreenActivity.this, "You selected: "+selectedLetter, Toast.LENGTH_SHORT).show();
+                Toast.makeText(DrawScreenActivity.this, "You selected: "+letter, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -193,7 +195,11 @@ public class DrawScreenActivity extends AppCompatActivity {
                     // Build the request body
                     MultipartBody.Builder builder = new MultipartBody.Builder()
                             .setType(MultipartBody.FORM)
-                            .addFormDataPart("image", "image.png", RequestBody.create(byteArray, MediaType.get("image/png")));
+                            .addFormDataPart("image", "image.png", RequestBody.create(byteArray, MediaType.get("image/png")))
+                            .addFormDataPart("selectedLetter", String.valueOf(selectedLetter.index));
+//                    if (type == 1) {
+//                        builder.addFormDataPart("selectedLetter", String.valueOf(selectedLetter.index));
+//                    }
 
                     RequestBody requestBody = builder.build();
 
@@ -220,7 +226,7 @@ public class DrawScreenActivity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        if (Objects.equals(selectedLetter, responseData)) {
+                                        if (Objects.equals(String.valueOf(selectedLetter.index), responseData)) {
                                             ShowAlertDialog( bgClr, 0);
                                         } else {
                                             ShowAlertDialog( bgClr, 1);
