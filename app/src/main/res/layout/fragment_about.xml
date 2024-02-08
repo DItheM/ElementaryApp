@@ -40,8 +40,8 @@
 
     <ImageView
         android:id="@+id/pfp"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/plusjakartasansmedium"
-        android:text="We are a team of three dedicated students from the SLIT who came together to create this innovative Android Application as part of our academic journey. Our passion for technology and learning drove us to develop a solution that we believe will male a positive impact on users' lives."
+        android:text="We are a team of three dedicated students from the SLIT who came together to create this innovative Android Application as part of our academic journey. Our passion for technology and learning drove us to develop a solution that we believe will make a positive impact on users' lives."
         android:textColor="@color/subHead"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

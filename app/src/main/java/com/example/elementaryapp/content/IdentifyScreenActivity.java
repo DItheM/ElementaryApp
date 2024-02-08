@@ -21,16 +21,24 @@ import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.camera.view.PreviewView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.elementaryapp.R;
+import com.example.elementaryapp.classes.Lesson;
+import com.example.elementaryapp.classes.ObjectItem;
+import com.example.elementaryapp.recycler_view.RecycleViewAdapterLessons;
+import com.example.elementaryapp.recycler_view.RecycleViewAdapterObjects;
 import com.example.elementaryapp.services.Services;
 import com.google.common.util.concurrent.ListenableFuture;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import okhttp3.*;
@@ -43,6 +51,7 @@ public class IdentifyScreenActivity extends AppCompatActivity {
 
     int type;
     String url;
+    ArrayList<ObjectItem> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,19 +187,40 @@ public class IdentifyScreenActivity extends AppCompatActivity {
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 // Handle the server's response
                 if (response.isSuccessful()) {
+                    list = new ArrayList<>();
                     imageFile.delete();
                     // Server successfully received the image
                     // You can process the server's response here
                     String responseBody = response.body().string();
                     // Parse the JSON response
                     try {
-                        JSONObject json = new JSONObject(responseBody);
-                        String prediction = json.getString("prediction");
-                        String confidence = json.getString("confidence");
+                        String prediction;
+                        String confidence;
+                        if (type == 0) {
+                            JSONObject json = new JSONObject(responseBody);
+                            prediction = json.getString("prediction");
+                            confidence = json.getString("confidence");
 
+                        } else {
+                            prediction = "";
+                            confidence = "";
+                            JSONArray jsonArray = new JSONArray(responseBody);
+                            // Process the received array data
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                try {
+                                    JSONArray innerArray = jsonArray.getJSONArray(i);
+                                    int count = innerArray.getInt(1);
+                                    String name = innerArray.getString(0);
+                                    list.add(new ObjectItem(name, count));
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
                         runOnUiThread(() -> {
                             ShowAlertDialog(type, prediction, confidence);
                         });
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -200,6 +230,15 @@ public class IdentifyScreenActivity extends AppCompatActivity {
     }
 
     public void ShowAlertDialog(int type, String predictionVal, String confidenceVal) {
+        if (type == 0) {
+            animalDialog(predictionVal, confidenceVal);
+        } else {
+            objectDialog();
+        }
+
+    }
+
+    public void animalDialog(String predictionVal, String confidenceVal) {
         AlertDialog alertDialog;
 
         // Create a dialog builder
@@ -221,11 +260,53 @@ public class IdentifyScreenActivity extends AppCompatActivity {
         prediction.setText(capitalizedPredictionVal);
         confidence.setText(processedConfidenceVal);
 
-        if (type == 0) {
-            imageView.setImageResource(R.drawable.explorer);
+
+        imageView.setImageResource(R.drawable.explorer);
+
+
+        // Create and show the dialog
+        alertDialog = builder.create();
+        alertDialog.show();
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle button click
+                // Dismiss the dialog or perform any other action
+                alertDialog.dismiss();
+            }
+        });
+    }
+
+    public void objectDialog() {
+        AlertDialog alertDialog;
+        RecycleViewAdapterObjects adapter;
+
+        // Create a dialog builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.TransparentAlertDialog);
+
+        // Inflate the custom layout
+        View customLayout = getLayoutInflater().inflate(R.layout.object_dialog_layout, null);
+        builder.setView(customLayout);
+
+        // Set up your custom views and actions
+        TextView error = customLayout.findViewById(R.id.no_found_text);
+        Button btn = customLayout.findViewById(R.id.button);
+        RecyclerView recyclerView = customLayout.findViewById(R.id.recyclerView);
+
+        if (list.isEmpty()){
+            error.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
         } else {
-            imageView.setImageResource(R.drawable.try_again);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+            recyclerView.setLayoutManager(layoutManager);
+            adapter = new RecycleViewAdapterObjects(this, list);
+            recyclerView.setAdapter(adapter);
+
+            error.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
         }
+
 
         // Create and show the dialog
         alertDialog = builder.create();
