@@ -1,0 +1,12 @@
+models/animal-classifier.h5
+models/animal-classifier.json
+models/best.pt
+models/handwritten_digits.model
+models/LB.sav
+models/sin_model.h5
+data/object_received/object.jpg
+data/received/animal.jpg
+data/received/number.png
+data/received/sinhala.png
+data/resized/number.png
+data/resized/sinhala.png
