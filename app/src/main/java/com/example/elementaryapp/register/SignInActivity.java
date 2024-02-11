@@ -10,6 +10,7 @@ import android.widget.Button;
 import com.example.elementaryapp.R;
 import com.example.elementaryapp.content.MenuMainActivity;
 import com.example.elementaryapp.database.DatabaseHelper;
+import com.example.elementaryapp.services.Services;
 
 public class SignInActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
@@ -18,6 +19,8 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
+        Services.createIpKey(this);
 
         Button startLearningBtn = findViewById(R.id.save_btn);
         databaseHelper = new DatabaseHelper(this);

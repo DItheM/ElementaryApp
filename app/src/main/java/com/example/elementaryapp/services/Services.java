@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +22,27 @@ import com.google.android.gms.cast.framework.media.ImagePicker;
 public class Services {
 
     public static String ipAddress = "http://192.168.5.62:5000";
+
+    public static void createIpKey(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        if (sharedPreferences.contains("key")) {
+            ipAddress = sharedPreferences.getString("key", "");
+        } else {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("key", ipAddress);
+            editor.apply();
+        }
+    }
+
+    public static void updateIpKey(Context context, String key) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("key", key);
+        editor.apply();
+    }
+
+
+
 
     //back button functionality
     public static void onPressBack (Activity activity) {
