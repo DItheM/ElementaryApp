@@ -244,6 +244,10 @@ public class DrawScreenActivity extends AppCompatActivity {
         });
     }
 
+    public void Show(int bgClr, int type) {
+
+    }
+
     public void ShowAlertDialog(int bgClr, int type) {
         AlertDialog alertDialog;
 

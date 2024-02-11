@@ -75,6 +75,9 @@ public class LessonsScreenActivity extends AppCompatActivity {
             Lesson lesson_2 = new Lesson(R.drawable.objects, "Identify objects", "Delightful introduction to the world of objects", "detect", 1);
             list.add(lesson_2);
 
+            Lesson lesson_3 = new Lesson(R.drawable.vr, "Enter VR", "Enter to the virtual world to see animals in your world", "vr", -1);
+            list.add(lesson_3);
+
             bgClr = R.color.bgClr_2;
         }
 
@@ -115,6 +118,9 @@ public class LessonsScreenActivity extends AppCompatActivity {
                         startActivity(intent);
                     } else if (lesson.pageType.equals("quiz")) {
                         Intent intent = new Intent(LessonsScreenActivity.this, MathQuizScreenActivity.class);
+                        startActivity(intent);
+                    } else if (lesson.pageType.equals("vr")) {
+                        Intent intent = new Intent(LessonsScreenActivity.this, VrSceenActivity.class);
                         startActivity(intent);
                     }
                 }
