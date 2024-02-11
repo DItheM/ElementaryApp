@@ -39,6 +39,7 @@ public class Services {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("key", key);
         editor.apply();
+        ipAddress = key;
     }
 
 

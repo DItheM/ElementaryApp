@@ -46,7 +46,6 @@ public class SettingsFragment extends Fragment {
 
     public void saveIp() {
         Services.updateIpKey(requireContext(), ipInput.getText().toString());
-        Services.ipAddress = ipInput.getText().toString();
         Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
     }
 }
