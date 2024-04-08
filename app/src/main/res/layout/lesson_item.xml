@@ -45,21 +45,21 @@
                 android:id="@+id/header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/plusjakartasansbold"
+                android:fontFamily="@font/fmarjunnsinhala"
                 android:text="Header"
                 android:textColor="@color/white"
-                android:textSize="24sp" />
+                android:textSize="34sp" />
 
             <TextView
                 android:id="@+id/confidence"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/plusjakartasansmedium"
+                android:fontFamily="@font/fmarjunnsinhala"
                 android:gravity="center"
                 android:text="Sub Text"
                 android:textColor="@color/inputBack"
-                android:textSize="14sp" />
+                android:textSize="24sp" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

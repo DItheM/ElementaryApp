@@ -27,19 +27,19 @@
                 android:id="@+id/heading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/plusjakartasansmedium"
-                android:text="This is"
+                android:fontFamily="@font/fmarjunnsinhala"
+                android:text="ud úiska"
                 android:textColor="@color/subHead"
-                android:textSize="24sp" />
+                android:textSize="34sp" />
 
             <TextView
                 android:id="@+id/prediction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/plusjakartasansbold"
-                android:text="what I found"
+                android:fontFamily="@font/fmarjunnsinhala"
+                android:text="y÷kd.;a jia;+ka"
                 android:textColor="@color/Heading"
-                android:textSize="34sp" />
+                android:textSize="44sp" />
         </LinearLayout>
 
         <ImageView
@@ -58,8 +58,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:backgroundTint="@color/bgClr_2"
-            android:fontFamily="@font/plusjakartasansbold"
-            android:text="Thanks!"
+            android:fontFamily="@font/fmarjunnsinhala"
+            android:text="ia;+;shsæ"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -80,11 +81,11 @@
                 android:id="@+id/no_found_text"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/plusjakartasansmedium"
+                android:fontFamily="@font/fmarjunnsinhala"
                 android:gravity="center"
-                android:text="Nothing found!"
+                android:text="lsisjla yuqjQfha ke;æ"
                 android:textColor="@color/incorrect"
-                android:textSize="14sp" />
+                android:textSize="24sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"

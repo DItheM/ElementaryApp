@@ -51,19 +51,19 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/plusjakartasansbold"
-                android:text="Think"
+                android:fontFamily="@font/fmarjunnsinhala"
+                android:text="fyd|g ys;,"
                 android:textColor="@color/Heading"
-                android:textSize="34sp" />
+                android:textSize="44sp" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/plusjakartasansmedium"
-                android:text="and Answer"
+                android:fontFamily="@font/fmarjunnsinhala"
+                android:text="W;a;r fokak"
                 android:textColor="@color/subHead"
-                android:textSize="24sp" />
+                android:textSize="34sp" />
 
         </LinearLayout>
 
@@ -181,12 +181,12 @@
                 android:id="@+id/not"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/plusjakartasansbold"
+                android:fontFamily="@font/fmarjunnsinhala"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:text="Choose the answer"
+                android:text="W;a;rh f;darkak"
                 android:textColor="@color/Heading"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -296,10 +296,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:backgroundTint="@color/btnBack"
-        android:fontFamily="@font/plusjakartasansbold"
+        android:fontFamily="@font/fmarjunnsinhala"
         android:padding="20dp"
-        android:text="Skip"
-        android:textSize="20sp"
+        android:text="w;yßkak"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

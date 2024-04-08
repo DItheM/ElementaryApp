@@ -167,10 +167,10 @@ public class MathQuizScreenActivity extends AppCompatActivity {
         skip_btn.setTextColor(getResources().getColor(R.color.white));
         if (isCorrect) {
             skip_btn.setBackgroundColor(getResources().getColor(R.color.correct));
-            skip_btn.setText("Correct!");
+            skip_btn.setText("ksjerÈhsæ");
         } else {
             skip_btn.setBackgroundColor(getResources().getColor(R.color.incorrect));
-            skip_btn.setText("Incorrect!");
+            skip_btn.setText("jerÈhsæ");
         }
 
     }
@@ -180,7 +180,7 @@ public class MathQuizScreenActivity extends AppCompatActivity {
         ans_2_bg.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.bgClr_1)));
         ans_3_bg.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.bgClr_1)));
         skip_btn.setBackgroundColor(getResources().getColor(R.color.btnBack));
-        skip_btn.setText("Skip");
+        skip_btn.setText("w;yßkak");
         skip_btn.setEnabled(true);
     }
 

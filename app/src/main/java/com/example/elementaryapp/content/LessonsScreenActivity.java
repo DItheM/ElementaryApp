@@ -50,32 +50,32 @@ public class LessonsScreenActivity extends AppCompatActivity {
         int bgClr;
 
         if (type == 0) {
-            Lesson lesson_1 = new Lesson(R.drawable.draw_img, "Write numbers 1 to 9", "Delightful introduction to the world of numbers", "draw", 0);
+            Lesson lesson_1 = new Lesson(R.drawable.draw_img, "wxl ,sùu", ".‚; wxl .ek ir,j bf.k.uq'", "draw", 0);
             list.add(lesson_1);
 
-            Lesson lesson_2 = new Lesson(R.drawable.i_2, "Watch tutorials", "Step-by-step video tutorials on how to write numbers 1 to 9", "tutorial", 0);
+            Lesson lesson_2 = new Lesson(R.drawable.i_2, "wxl ,shk úÈh", "wxl ,shkafka fldfyduo lsh, ùäfhda weiqfrka n,uq'", "tutorial", 0);
             list.add(lesson_2);
 
-            Lesson lesson_3 = new Lesson(R.drawable.test_png, "Get a test", "Challenge young minds with a series of engaging tasks", "quiz", -1);
+            Lesson lesson_3 = new Lesson(R.drawable.test_png, "ir, m%YaK", "ir, .‚; .eg¨ úi|uq'", "quiz", -1);
             list.add(lesson_3);
 
             bgClr = R.color.bgClr_1;
         } else if (type == 1) {
-            Lesson lesson_1 = new Lesson(R.drawable.draw_img, "Write sinhala letters", "Delightful introduction to the world of sinhala letters", "draw", 1);
+            Lesson lesson_1 = new Lesson(R.drawable.draw_img, "isxy, wl=re ,shuq", "isxy, wl=re .ek ir,j bf.k.uq'", "draw", 1);
             list.add(lesson_1);
 
-            Lesson lesson_2 = new Lesson(R.drawable.i_2, "Watch tutorials", "Step-by-step video tutorials on how to write sinhala letters", "tutorial", 1);
+            Lesson lesson_2 = new Lesson(R.drawable.i_2, "wl=re ,shk úÈh", "wl=re ,shkafka fldfyduo lsh, ùäfhda weiqfrka n,uq'", "tutorial", 1);
             list.add(lesson_2);
 
             bgClr = R.color.bgClr_3;
         } else {
-            Lesson lesson_1 = new Lesson(R.drawable.animals, "Identify animals", "Delightful introduction to the world of animals", "detect", 0);
+            Lesson lesson_1 = new Lesson(R.drawable.animals, "i;=ka y÷kd.ekSu", "Tn olsk i;=ka f,aisfhka w÷k.kak'", "detect", 0);
             list.add(lesson_1);
 
-            Lesson lesson_2 = new Lesson(R.drawable.objects, "Identify objects", "Delightful introduction to the world of objects", "detect", 1);
+            Lesson lesson_2 = new Lesson(R.drawable.objects, "jia;+ka y÷kd.ekSu", "Tn olsk jia;+ka f,aisfhka w÷k.kak'", "detect", 1);
             list.add(lesson_2);
 
-            Lesson lesson_3 = new Lesson(R.drawable.vr, "Enter VR", "Enter to the virtual world to see animals in your world", "vr", -1);
+            Lesson lesson_3 = new Lesson(R.drawable.vr, "Tfí f,dalfhka Tíng", "T.afukagâ ßhe,sá ;dlaIKfhka i;=ka Èyd n,kak'", "vr", -1);
             list.add(lesson_3);
 
             bgClr = R.color.bgClr_2;

@@ -53,19 +53,19 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/plusjakartasansbold"
-                android:text="Capture and"
+                android:fontFamily="@font/fmarjunnsinhala"
+                android:text="pdhdrEmfhka"
                 android:textColor="@color/Heading"
-                android:textSize="34sp" />
+                android:textSize="44sp" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/plusjakartasansmedium"
-                android:text="Identify"
+                android:fontFamily="@font/fmarjunnsinhala"
+                android:text="y÷kd .kak"
                 android:textColor="@color/subHead"
-                android:textSize="24sp" />
+                android:textSize="34sp" />
 
         </LinearLayout>
     </LinearLayout>
@@ -102,9 +102,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:backgroundTint="@color/white"
-                android:fontFamily="@font/plusjakartasansbold"
-                android:text="Capture"
+                android:fontFamily="@font/fmarjunnsinhala"
+                android:text="y÷kd.kak"
                 android:textColor="@color/bgClr_2"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

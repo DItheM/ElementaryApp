@@ -265,15 +265,15 @@ public class DrawScreenActivity extends AppCompatActivity {
         Button btn = customLayout.findViewById(R.id.button);
 
         if (type == 0) {
-            Header.setText("Correct!");
-            subText.setText("You done it champ, congratulations!");
+            Header.setText("ksjerÈhsæ");
+            subText.setText("ch.%yKhg iqN me;=ïæ");
             imageView.setImageResource(R.drawable.thumbs_up);
-            btn.setText("Thanks!");
+            btn.setText("ia;+;shsæ");
         } else {
-            Header.setText("Not Correct!");
-            subText.setText("Try again champ, you can do it!");
+            Header.setText("jerÈhsæ");
+            subText.setText("kej; W;aidy lrkak\" Tng wksjdh–fhka mq¨jkaæ");
             imageView.setImageResource(R.drawable.try_again);
-            btn.setText("Try again");
+            btn.setText("ia;+;shsæ");
         }
 
         btn.setBackgroundColor(bgClr);
