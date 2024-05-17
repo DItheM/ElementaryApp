@@ -24,6 +24,12 @@
         <meta-data android:name="com.google.ar.core" android:value="optional" />
 
         <activity
+            android:name=".content.TutorialScreenActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity
             android:name=".content.VrSceenActivity"
             android:exported="false"
             android:screenOrientation="portrait">

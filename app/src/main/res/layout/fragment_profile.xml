@@ -83,10 +83,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:ems="10"
-            android:fontFamily="@font/fmarjunnsinhala"
-            android:hint="Tnf.a ku "
-            android:textSize="20sp"
-            android:inputType="text" />
+            android:fontFamily="@font/plusjakartasansbold"
+            android:hint="Enter Your Name"
+            android:inputType="text"
+            android:textSize="14sp" />
     </androidx.cardview.widget.CardView>
 
     <Button
