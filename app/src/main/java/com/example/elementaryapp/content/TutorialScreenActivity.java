@@ -38,6 +38,19 @@ public class TutorialScreenActivity extends AppCompatActivity {
             "https://www.youtube.com/embed/Ovf0sGrA6TU?si=I1e53InTKWgysRG8"
     };
 
+    int[] thumbnails = {
+            R.drawable.thumbnail_0,
+            R.drawable.thumbnail_1,
+            R.drawable.thumbnail_2,
+            R.drawable.thumbnail_3,
+            R.drawable.thumbnail_4,
+            R.drawable.thumbnail_5,
+            R.drawable.thumbnail_6,
+            R.drawable.thumbnail_7,
+            R.drawable.thumbnail_8,
+            R.drawable.thumbnail_9
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +73,7 @@ public class TutorialScreenActivity extends AppCompatActivity {
 
         if (type == 0) {
             for (int i = 0;links.length > i; i++) {
-                list.add(new Tutorial("wxl " + i + " ,shk úÈh n,uq", links[i]));
+                list.add(new Tutorial("wxl " + i + " ,shk úÈh n,uq", links[i], thumbnails[i]));
             }
         }
 //        else {

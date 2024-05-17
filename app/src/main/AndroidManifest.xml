@@ -24,6 +24,10 @@
         <meta-data android:name="com.google.ar.core" android:value="optional" />
 
         <activity
+            android:name=".content.WatchVideoActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".content.TutorialScreenActivity"
             android:exported="false"
             android:screenOrientation="portrait" >
