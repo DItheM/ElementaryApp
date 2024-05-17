@@ -33,20 +33,47 @@ model_animal.load_weights('models/animal-classifier.h5')
 
 model_object = YOLO("models/best.pt") 
 
+#English Format
+# animal_class_labels = ['bear', 'brown bear', 'bull', 'butterfly', 'camel', 'canary', 'caterpillar', 'cattle', 'centipede',
+#                 'cheetah', 'chicken', 'crab', 'crocodile', 'deer', 'duck', 'eagle', 'elephant',
+#                 'fish', 'fox', 'frog', 'giraffe', 'goat', 'goldfish', 'goose', 'hamster',
+#                 'harbor seal', 'hedgehog', 'hippopotamus', 'horse', 'jaguar', 'jellyfish', 'kangaroo', 'koala', 'ladybug',
+#                 'leopard', 'lion', 'lizard', 'lynx', 'magpie', 'monkey', 'moths and butterflies', 'mouse', 'mule', 'ostrich', 'otter', 'owl', 'panda',
+#                 'parrot', 'penguin', 'pig', 'polar bear', 'rabbit', 'raccoon', 'raven', 'red panda', 'rhinoceros', 'scorpian', 'sea lion', 'sea turtle',
+#                 'seahorse', 'shark', 'sheep', 'shrimp', 'snail', 'snake', 'sparrow', 'spider', 'squid', 'squirrel', 'starfish', 'swan', 'tick', 'tiger',
+#                 'tortoise', 'turkey', 'turtle', 'whale', 'woodpecker', 'worm', 'zebra']
 
-animal_class_labels = ['bear', 'brown bear', 'bull', 'butterfly', 'camel', 'canary', 'caterpillar', 'cattle', 'centipede',
-                'cheetah', 'chicken', 'crab', 'crocodile', 'deer', 'duck', 'eagle', 'elephant',
-                'fish', 'fox', 'frog', 'giraffe', 'goat', 'goldfish', 'goose', 'hamster',
-                'harbor seal', 'hedgehog', 'hippopotamus', 'horse', 'jaguar', 'jellyfish', 'kangaroo', 'koala', 'ladybug',
-                'leopard', 'lion', 'lizard', 'lynx', 'magpie', 'monkey', 'moths and butterflies', 'mouse', 'mule', 'ostrich', 'otter', 'owl', 'panda',
-                'parrot', 'penguin', 'pig', 'polar bear', 'rabbit', 'raccoon', 'raven', 'red panda', 'rhinoceros', 'scorpian', 'sea lion', 'sea turtle',
-                'seahorse', 'shark', 'sheep', 'shrimp', 'snail', 'snake', 'sparrow', 'spider', 'squid', 'squirrel', 'starfish', 'swan', 'tick', 'tiger',
-                'tortoise', 'turkey', 'turtle', 'whale', 'woodpecker', 'worm', 'zebra']
+#Legacy Sinhala Format
+# animal_class_labels = ['j,yd', 'ÿUqre j,yd', 'f.dkd', 'iuk,hd', 'Tgqjd', 'lekß', 'o<Uqjd', '.jhd', '.re~d',
+#                 'Ögd', 'l=l=<d', 'll=¨jd', 'lsUq,d', 'uqjd', ';drdj', 'Wl=iaid', 'w,shd',
+#                 'මාලුවා', 'kßhd', 'f.ïnd', 'ðrd*a', 't¨jd', 'f.da,aâ *sIa', 'md;a;hd', 'yeïiag¾',
+#                 'iS,a u;aiHhd', 'b;a;Ejd', 'ysmfmdfÜuia', 'wYajhd', 'c.=j¾', 'fc,s *sIa', 'lex.rejd', 'flda,d', 'f,aä n.a',
+#                 'Èúhd', 'isxyhd', 'lgqiaid', 'j,a n<,d', 'fmd,a lsÉpd', 'j÷rd', 'i,nhka iy iuk¨ka', 'óhd', 'fldg¨jd', 'meianrd', 'Èh n,a,d', 'nluQKd', 'mekavd',
+#                 '.srjd', 'fmka.=hska', 'W!rd', 'ysu j,id', 'ydjd', '/l+ka', 'lmqgd', 'r;= mekavd', 'rhsfkdaisria', 'f.dakqiaid', 'uqyqÿ isxyhd', 'leianEjd',
+#                 'uqyqÿ wYajhd', 'fudard', 'neg¨jd', 'biaid', 'f.d¨ fn,a,d', 'khd', 'f.a l=re,a,d', 'ul=¨jd', 'oe,a,d', 'f,akd', 'meyeÕs,a,d', 'yxihd', 'ls‚;=,a,d', 'fldáhd',
+#                 '.,a bínd', 'l¨l=uka', 'bínd', ';,auy', 'fldÜfgdarejd', 'mKqjd', 'iSn%d']
+
+#Sinhala Format
+animal_class_labels = ['වලහා', 'දුඹුරු වලහා', 'ගොනා', 'සමනලයා', 'ඔටුවා', 'කැනරි', 'දළඹුවා', 'ගවයා', 'ගරුඬා',
+                'චීටා', 'කුකුළා', 'කකුලූවා', 'කිඹුලා', 'මුවා', 'තාරාව', 'උකුස්සා', 'අලියා',
+                'මාලුවා', 'නරියා', 'ගෙම්බා', 'ජිරාෆ්', 'එලූවා', 'ගෝල්ඩ් ෆිෂ්', 'පාත්තයා', 'හැම්ස්ටර්',
+                'සීල් මත්ස්‍යයා', 'ඉත්තෑවා', 'හිපපොටේමස්', 'අශ්වයා', 'ජගුවර්', 'ජෙලි ෆිෂ්', 'කැංගරුවා', 'කෝලා', 'ලේඩි බග්',
+                'දිවියා', 'සිංහයා', 'කටුස්සා', 'වල් බළලා', 'පොල් කිච්චා', 'වඳුරා', 'සලබයන් සහ සමනලූන්', 'මීයා', 'කොටලූවා', 'පැස්බරා', 'දිය බල්ලා', 'බකමූණා', 'පැන්ඩා',
+                'ගිරවා', 'පෙන්ගුයින්', 'ඌරා', 'හිම වලසා', 'හාවා', 'රැකූන්', 'කපුටා', 'රතු පැන්ඩා', 'රයිනෝසිරස්', 'ගෝනුස්සා', 'මුහුදු සිංහයා', 'කැස්බෑවා',
+                'මුහුදු අශ්වයා', 'මෝරා', 'බැටලූවා', 'ඉස්සා', 'ගොලූ ඛෙල්ලා', 'නයා', 'ගේ කුරුල්ලා', 'මකුලුවා', 'දැල්ලා', 'ලේනා', 'පැහැඟිල්ලා', 'හංසයා', 'කිනිතුල්ලා', 'කොටියා',
+                'ගල් ඉබ්බා', 'කලූකුමන්', 'ඉබ්බා', 'තල්මහ', 'කොට්ටෝරුවා', 'පණුවා', 'සීබ්‍රා']
 
 # Define the classes dictionary
-objects_dict = {0: "Door", 1: "Cabinet Door", 2: "Refrigerator Door", 3: "Window", 4: "Chair", 5: "Table",
-                6: "Cabinet", 7: "Couch", 8: "Opened Door", 9: "Pole"}
+# objects_dict = {0: "Door", 1: "Cabinet Door", 2: "Refrigerator Door", 3: "Window", 4: "Chair", 5: "Table",
+#                 6: "Cabinet", 7: "Couch", 8: "Opened Door", 9: "Pole"}
 
+#Legacy Sinhala Format
+# objects_dict = {0: "fodrj,a", 1: "leìkÜ fodrj,a", 2: "YS;lrK fodrj,a", 3: "cfka,", 4: "mqgq", 5: "fïi",
+#                 6: "leìfkÜgq", 7: "hyka", 8: "újq¾; l, fodrj,a", 9: "lKq"}
+
+#Sinhala Format
+objects_dict = {0: "දොරවල්", 1: "කැබිනට් දොරවල්", 2: "ශීතකරණ දොරවල්", 3: "ජනේල", 4: "පුටු", 5: "මේස",
+                6: "කැබිනෙට්ටු", 7: "යහන්", 8: "විවුර්ත කල දොරවල්", 9: "කණු"}
 
 def preprocess_image(image_path):
     img = PIL.Image.open(image_path)
@@ -220,12 +247,12 @@ def detectObject():
         for class_id, count in class_counts.items():
             if count > 0:
                 class_name = objects_dict[class_id]
-                if count > 1:
-                    class_name = f"{class_name}s"
+                # if count > 1:
+                #     class_name = f"{class_name}s"
                 returnData.append([class_name, count])             
 
     return returnData
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=False, host='0.0.0.0')
