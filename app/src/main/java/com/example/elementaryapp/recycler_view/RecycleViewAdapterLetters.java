@@ -102,7 +102,7 @@ class ViewHolderLetters extends RecyclerView.ViewHolder{
 
         number = itemView.findViewById(R.id.number);
         sinhala = itemView.findViewById(R.id.sinhala);
-        cardView = itemView.findViewById(R.id.num_1_bg);
+        cardView = itemView.findViewById(R.id.card_bg);
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

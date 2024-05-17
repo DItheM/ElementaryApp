@@ -50,11 +50,11 @@ public class LessonsScreenActivity extends AppCompatActivity {
         int bgClr;
 
         if (type == 0) {
-            Lesson lesson_1 = new Lesson(R.drawable.draw_img, "Write numbers 1 to 9", "Delightful introduction to the world of numbers", "draw", 0);
-            list.add(lesson_1);
-
             Lesson lesson_2 = new Lesson(R.drawable.i_2, "Watch tutorials", "Step-by-step video tutorials on how to write numbers 1 to 9", "tutorial", 0);
             list.add(lesson_2);
+
+            Lesson lesson_1 = new Lesson(R.drawable.draw_img, "Write numbers 1 to 9", "Delightful introduction to the world of numbers", "draw", 0);
+            list.add(lesson_1);
 
             Lesson lesson_3 = new Lesson(R.drawable.test_png, "Get a test", "Challenge young minds with a series of engaging tasks", "quiz", -1);
             list.add(lesson_3);
@@ -64,8 +64,8 @@ public class LessonsScreenActivity extends AppCompatActivity {
             Lesson lesson_1 = new Lesson(R.drawable.draw_img, "Write sinhala letters", "Delightful introduction to the world of sinhala letters", "draw", 1);
             list.add(lesson_1);
 
-            Lesson lesson_2 = new Lesson(R.drawable.i_2, "Watch tutorials", "Step-by-step video tutorials on how to write sinhala letters", "tutorial", 1);
-            list.add(lesson_2);
+//            Lesson lesson_2 = new Lesson(R.drawable.i_2, "Watch tutorials", "Step-by-step video tutorials on how to write sinhala letters", "tutorial", 1);
+//            list.add(lesson_2);
 
             bgClr = R.color.bgClr_3;
         } else {
@@ -110,6 +110,10 @@ public class LessonsScreenActivity extends AppCompatActivity {
                 if (lesson != null) {
                     if (lesson.pageType.equals("draw")) {
                         Intent intent = new Intent(LessonsScreenActivity.this, DrawScreenActivity.class);
+                        intent.putExtra("type", lesson.subType);
+                        startActivity(intent);
+                    } else if (lesson.pageType.equals("tutorial")) {
+                        Intent intent = new Intent(LessonsScreenActivity.this, TutorialScreenActivity.class);
                         intent.putExtra("type", lesson.subType);
                         startActivity(intent);
                     } else if (lesson.pageType.equals("detect")) {

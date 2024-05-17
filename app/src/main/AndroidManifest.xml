@@ -7,8 +7,10 @@
     <uses-feature android:name="android.hardware.camera" />
 
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.hardware.camera.ar" android:required="true" />
 
+    <uses-feature
+        android:name="android.hardware.camera.ar"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -21,13 +23,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ElementaryApp"
         tools:targetApi="31">
-        <meta-data android:name="com.google.ar.core" android:value="optional" />
+        <activity
+            android:name=".content.TutorialScreenActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" >
+    </activity>
+
+        <meta-data
+            android:name="com.google.ar.core"
+            android:value="optional" />
 
         <activity
             android:name=".content.VrSceenActivity"
             android:exported="false"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".register.RegisterActivity"
             android:exported="false"
@@ -52,13 +61,11 @@
             android:name=".register.SignInActivity"
             android:exported="true"
             android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-
-
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".content.DrawScreenActivity"
