@@ -77,35 +77,7 @@ public class RecycleViewAdapterTutorials extends RecyclerView.Adapter<ViewHolder
         Tutorial tutorial = list.get(position);
         holder.header.setText(tutorial.name);
         holder.imageView.setImageResource(tutorial.thumbnail);
-//        Uri videoUri = Uri.parse("android.resource://" + "com.example.elementaryapp" + "/" + tutorial.link);
-//        holder.webView.setVideoURI(videoUri);
         holder.cardView.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), bg_clr));
-//        holder.resetWebView();  // Reset the WebView to ensure it doesn't show old content
-//
-//        if (isNetworkAvailable()) {
-//            holder.webView.setVisibility(View.VISIBLE);
-//            holder.errorTextView.setVisibility(View.GONE);
-//
-//            // Check if the URL for the current position has been loaded successfully
-//            if (!positionUrlMap.containsKey(position) || !loadedUrls.contains(tutorial.link)) {
-//                // Load the URL
-//                holder.webView.loadUrl(tutorial.link);
-////                // Add the URL to the loaded URLs set and update the map
-////                loadedUrls.add(tutorial.link);
-////                positionUrlMap.put(position, tutorial.link);
-//            } else {
-//                holder.webView.loadUrl(positionUrlMap.get(position)); // Load from map if previously loaded
-//            }
-//        } else {
-//            holder.webView.setVisibility(View.GONE);
-//            holder.errorTextView.setVisibility(View.VISIBLE);
-//        }
-
-
-//        holder.webView.loadData(tutorial.link, "text/html", "utf-8");
-//        holder.webView.getSettings().setJavaScriptEnabled(true);
-//        holder.webView.setWebChromeClient(new WebChromeClient());
-//        holder.webView.loadUrl("https://www.youtube.com");
 
     }
 
@@ -129,10 +101,6 @@ class ViewHolderTutorials extends RecyclerView.ViewHolder {
     TextView header;
     ImageView imageView;
     CardView cardView, videoCardView;
-    WebChromeClient.CustomViewCallback customViewCallback;
-    View customView;
-    ProgressBar progressBar;
-    TextView errorTextView;
     Button watch_btn;
 
     private RecycleViewAdapterTutorials adapter;
@@ -144,14 +112,7 @@ class ViewHolderTutorials extends RecyclerView.ViewHolder {
         header = itemView.findViewById(R.id.header);
         cardView = itemView.findViewById(R.id.card_bg);
         videoCardView = itemView.findViewById(R.id.videoCardView);
-        progressBar = itemView.findViewById(R.id.progressBar);
-        errorTextView = itemView.findViewById(R.id.errorTextView);
         watch_btn = itemView.findViewById(R.id.watch_btn);
-//        youTubePlayerView = itemView.findViewById(R.id.youtube_player);
-//        // Access the lifecycle owner from the RecyclerView
-//        lifecycleOwner = (LifecycleOwner) itemView.getContext();
-//        // Set YouTubePlayerView's lifecycle owner
-//        lifecycleOwner.getLifecycle().addObserver(youTubePlayerView);
         imageView = itemView.findViewById(R.id.imageView);
         watch_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,113 +125,8 @@ class ViewHolderTutorials extends RecyclerView.ViewHolder {
                 adapter.context.startActivity(intent);
             }
         });
-
-
-        // Media controller to enable play, pause, forward, etc. options.
-//        MediaController mediaController = new MediaController(adapter.context);
-//        videoView.setMediaController(mediaController);
-//        mediaController.setAnchorView(videoView);
-//
-//        videoView.start();
-
-//        WebSettings webSettings = webView.getSettings();
-//        webSettings.setJavaScriptEnabled(true);
-
-
-
-//        webView.setWebChromeClient(new WebChromeClient() {
-//            @Override
-//            public void onShowCustomView(View view, CustomViewCallback callback) {
-//                if (customView != null) {
-//                    callback.onCustomViewHidden();
-//                    return;
-//                }
-//                customView = view;
-//                customViewCallback = callback;
-//                adapter.videoContainer.addView(view);
-//                adapter.videoContainer.setVisibility(View.VISIBLE);
-//                webView.setVisibility(View.GONE);
-//            }
-//
-//            @Override
-//            public void onHideCustomView() {
-//                if (customView == null) return;
-//                adapter.videoContainer.removeView(customView);
-//                adapter.videoContainer.setVisibility(View.GONE);
-//                webView.setVisibility(View.VISIBLE);
-//                customView = null;
-//                customViewCallback.onCustomViewHidden();
-//            }
-//
-//            @Override
-//            public void onProgressChanged(WebView view, int newProgress) {
-//                if (newProgress == 100) {
-//                    progressBar.setVisibility(View.GONE);
-//                } else {
-//                    progressBar.setVisibility(View.VISIBLE);
-//                }
-//            }
-//        });
-//
-//        webView.setWebViewClient(new WebViewClient() {
-//            @Override
-//            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-//                progressBar.setVisibility(View.VISIBLE);
-//            }
-//
-//            @Override
-//            public void onPageFinished(WebView view, String url) {
-//                progressBar.setVisibility(View.GONE);
-//                // Add the URL to the loaded URLs set and update the map
-//                adapter.loadedUrls.add(url);
-//                adapter.positionUrlMap.put(getAdapterPosition(), url);
-//            }
-//
-//            @Override
-//            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-//                String url = request.getUrl().toString();
-//                if (url.contains("youtube.com") || url.contains("youtu.be")) {
-//                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    Context context = view.getContext();
-//                    context.startActivity(intent);
-//                    return true;
-//                }
-//                return false;
-//            }
-//
-//            @Override
-//            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-//                webView.setVisibility(View.GONE);
-//                errorTextView.setVisibility(View.VISIBLE);
-//                progressBar.setVisibility(View.GONE);
-//
-//                // Attempt to reload the WebView after a short delay
-//                webView.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        // Show progress bar while reloading
-//                        progressBar.setVisibility(View.VISIBLE);
-//                        // Reload the WebView
-//                        webView.reload();
-//                    }
-//                }, 1000);
-//            }
-//
-//            @Override
-//            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-//                handler.proceed();
-//            }
-//        });
     }
 
-    // Method to reset the WebView
-//    public void resetWebView() {
-//        webView.stopLoading();
-//        webView.loadUrl("about:blank");
-//        webView.clearHistory();
-//        webView.clearCache(true);
-//    }
 
     //linking the adapter
     public ViewHolderTutorials linkAdapter(RecycleViewAdapterTutorials adapter) {

@@ -36,8 +36,8 @@
                 android:id="@+id/prediction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/plusjakartasansbold"
-                android:text="Prediction"
+                android:fontFamily="@font/fmarjunnsinhala"
+                android:text="මාලුවා"
                 android:textColor="@color/Heading"
                 android:textSize="34sp" />
         </LinearLayout>

@@ -45,7 +45,7 @@ public class RecycleViewAdapterObjects extends RecyclerView.Adapter<ViewHolderOb
     @Override
     public void onBindViewHolder(@NonNull ViewHolderObjects holder, int position) {
         ObjectItem object = list.get(position);
-        String mainText = object.count + " " + object.name;
+        String mainText = object.name + "  " + object.count + "යි";
         holder.text.setText(mainText);
 
     }
