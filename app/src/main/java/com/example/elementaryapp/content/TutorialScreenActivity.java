@@ -25,7 +25,7 @@ public class TutorialScreenActivity extends AppCompatActivity {
 
     FrameLayout videoContainer;
 
-    String[] links = {
+    String[] maths_links = {
             "https://www.youtube.com/embed/TYc5JZkvrqM?si=ULhgo3V_FhV1tRg0",
             "https://www.youtube.com/embed/zTa9Htgzxgo?si=qkzrGB9slF2i4eyo",
             "https://www.youtube.com/embed/YJwFXRcevNY?si=X1OTVrmnkHb3b-on",
@@ -38,7 +38,7 @@ public class TutorialScreenActivity extends AppCompatActivity {
             "https://www.youtube.com/embed/Ovf0sGrA6TU?si=I1e53InTKWgysRG8"
     };
 
-    int[] thumbnails = {
+    int[] maths_thumbnails = {
             R.drawable.thumbnail_0,
             R.drawable.thumbnail_1,
             R.drawable.thumbnail_2,
@@ -72,18 +72,23 @@ public class TutorialScreenActivity extends AppCompatActivity {
         int bgClr = R.color.bgClr_1;
 
         if (type == 0) {
-            for (int i = 0;links.length > i; i++) {
-                list.add(new Tutorial("wxl " + i + " ,shk úÈh n,uq", links[i], thumbnails[i]));
+            for (int i = 0;maths_links.length > i; i++) {
+                list.add(new Tutorial("wxl " + i + " ,shk úÈh n,uq", maths_links[i], maths_thumbnails[i]));
             }
         }
-//        else {
-//
-//            list.add(new Tutorial("How to write letter a", "https://www.youtube.com/embed/V2KCAfHjySQ?si=3nYbPysuA7GnAwdW"));
-//            list.add(new Tutorial("How to write letter aaa", ""));
-//
-//            bgClr = R.color.bgClr_3;
-//
-//        }
+        else {
+            list.add(new Tutorial("w" + " wl=r ,shk úÈh n,uq", "https://www.youtube.com/embed/KIja7DfEBQI?si=hQ3EtuTo4OORTTTm", R.drawable.thumbnail_a));
+            list.add(new Tutorial("wd" + " wl=r ,shk úÈh n,uq", "https://www.youtube.com/embed/eNEfKLLP5Jw?si=QLxHHLZU2qHCEq-7", R.drawable.thumbnail_aa));
+            list.add(new Tutorial("W" + " wl=r ,shk úÈh n,uq", "https://www.youtube.com/embed/2iFZYjxghWM?si=onf6nUXkCLKu4j1-", R.drawable.thumbnail_u));
+            list.add(new Tutorial("W!" + " wl=r ,shk úÈh n,uq", "https://www.youtube.com/embed/N3tDTb4wWH0?si=hwveJSCIzfboRkiS", R.drawable.thumbnail_uu));
+            list.add(new Tutorial("n" + " wl=r ,shk úÈh n,uq", "https://www.youtube.com/embed/A1IC5m_cUas?si=LLu0wr_brn39CdJS", R.drawable.thumbnail_ba));
+            list.add(new Tutorial("o" + " wl=r ,shk úÈh n,uq", "https://www.youtube.com/embed/IpoccNO7CUA?si=LI3WOnr8qnZwGZU3", R.drawable.thumbnail_da));
+            list.add(new Tutorial("," + " wl=r ,shk úÈh n,uq", "https://www.youtube.com/embed/hUvF6A_oanw?si=sUy3qHH8Zfs6DmkS", R.drawable.thumbnail_la));
+            list.add(new Tutorial("r" + " wl=r ,shk úÈh n,uq", "https://www.youtube.com/embed/gigPtkWWhYM?si=V36I_5NY0S0NgZTW", R.drawable.thumbnail_ra));
+
+            bgClr = R.color.bgClr_3;
+
+        }
 
         adapter = new RecycleViewAdapterTutorials(this, list, recyclerView, videoContainer, bgClr);
         recyclerView.setAdapter(adapter);

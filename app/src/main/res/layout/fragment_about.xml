@@ -23,19 +23,19 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/plusjakartasansbold"
-            android:text="About"
+            android:fontFamily="@font/fmarjunnsinhala"
+            android:text="wms"
             android:textColor="@color/Heading"
-            android:textSize="34sp" />
+            android:textSize="44sp" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/plusjakartasansmedium"
-            android:text=" Us"
+            android:fontFamily="@font/fmarjunnsinhala"
+            android:text=" .ek"
             android:textColor="@color/subHead"
-            android:textSize="34sp" />
+            android:textSize="44sp" />
     </LinearLayout>
 
     <ImageView
@@ -53,38 +53,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/plusjakartasansbold"
+        android:fontFamily="@font/fmarjunnsinhala"
         android:gravity="center_horizontal"
-        android:text="Welcome to FunLearn!"
+        android:text="@string/welcom_text"
         android:textColor="@color/Heading"
-        android:textSize="20sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pfp" />
 
-    <TextView
-        android:id="@+id/textView14"
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/plusjakartasansmedium"
-        android:text="We are a team of three dedicated students from the SLIT who came together to create this innovative Android Application as part of our academic journey. Our passion for technology and learning drove us to develop a solution that we believe will make a positive impact on users' lives."
-        android:textColor="@color/subHead"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/fmarjunnsinhala"
+            android:text="@string/about_us_description"
+            android:textColor="@color/subHead"
+            android:textSize="20sp" />
+    </ScrollView>
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/plusjakartasansbold"
-        android:text="Thank You!"
+        android:fontFamily="@font/fmarjunnsinhala"
+        android:text="fndfydau ia;+;shs"
         android:textColor="@color/Heading"
-        android:textSize="34sp"
+        android:textSize="44sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

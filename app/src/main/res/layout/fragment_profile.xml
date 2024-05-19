@@ -84,7 +84,7 @@
             android:layout_height="match_parent"
             android:ems="10"
             android:fontFamily="@font/plusjakartasansbold"
-            android:hint="Enter Your Name"
+            android:hint="ඔබගේ නම"
             android:inputType="text"
             android:textSize="14sp" />
     </androidx.cardview.widget.CardView>

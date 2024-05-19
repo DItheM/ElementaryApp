@@ -2,6 +2,7 @@ package com.example.elementaryapp.content;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.http.SslError;
@@ -35,6 +36,7 @@ public class WatchVideoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         // Retrieve data from the Intent
         String link = intent.getStringExtra("link");
+//        int bg_clr = intent.getIntExtra("bg_clr", 0);
 
         progressBar = findViewById(R.id.progressBar);
 

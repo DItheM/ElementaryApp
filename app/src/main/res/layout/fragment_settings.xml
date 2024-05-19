@@ -23,10 +23,10 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/plusjakartasansbold"
-            android:text="Settings"
+            android:fontFamily="@font/fmarjunnsinhala"
+            android:text="ieliqï"
             android:textColor="@color/Heading"
-            android:textSize="34sp" />
+            android:textSize="44sp" />
 
     </LinearLayout>
 
@@ -36,8 +36,9 @@
         android:layout_height="60dp"
         android:layout_marginTop="50dp"
         android:backgroundTint="@color/btnBack"
-        android:fontFamily="@font/plusjakartasansmedium"
-        android:text="Save"
+        android:fontFamily="@font/fmarjunnsinhala"
+        android:textSize="20sp"
+        android:text="fiaõ lrkak"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView8" />

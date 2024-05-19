@@ -61,11 +61,11 @@ public class LessonsScreenActivity extends AppCompatActivity {
 
             bgClr = R.color.bgClr_1;
         } else if (type == 1) {
-            Lesson lesson_1 = new Lesson(R.drawable.draw_img, "isxy, wl=re ,shuq", "isxy, wl=re .ek ir,j bf.k.uq'", "draw", 1);
+            Lesson lesson_1 = new Lesson(R.drawable.i_2, "wl=re ,shk úÈh", "wl=re ,shkafka fldfyduo lsh, ùäfhda weiqfrka n,uq'", "tutorial", 1);
             list.add(lesson_1);
 
-//            Lesson lesson_2 = new Lesson(R.drawable.i_2, "wl=re ,shk úÈh", "wl=re ,shkafka fldfyduo lsh, ùäfhda weiqfrka n,uq'", "tutorial", 1);
-//            list.add(lesson_2);
+            Lesson lesson_2 = new Lesson(R.drawable.draw_img, "isxy, wl=re ,shuq", "isxy, wl=re .ek ir,j bf.k.uq'", "draw", 1);
+            list.add(lesson_2);
 
             bgClr = R.color.bgClr_3;
         } else {

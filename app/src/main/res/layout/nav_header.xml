@@ -17,19 +17,19 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/plusjakartasansbold"
-            android:text="Fun"
+            android:fontFamily="@font/fmarjunnsinhala"
+            android:text="ñ;=re"
             android:textColor="@color/Heading"
-            android:textSize="34sp" />
+            android:textSize="44sp" />
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/plusjakartasansmedium"
-            android:text="Learn."
+            android:fontFamily="@font/fmarjunnsinhala"
+            android:text=" biafldaf,"
             android:textColor="@color/subHead"
-            android:textSize="34sp" />
+            android:textSize="44sp" />
     </LinearLayout>
 
 </LinearLayout>

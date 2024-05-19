@@ -122,6 +122,7 @@ class ViewHolderTutorials extends RecyclerView.ViewHolder {
                 Intent intent = new Intent(adapter.context, WatchVideoActivity.class);
                 Tutorial tutorial = adapter.list.get(getAdapterPosition());
                 intent.putExtra("link", tutorial.link);
+                intent.putExtra("bg_clr", adapter.bg_clr);
                 adapter.context.startActivity(intent);
             }
         });
